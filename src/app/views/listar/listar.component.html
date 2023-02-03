@@ -1,0 +1,55 @@
+<h1 class="text-center mt-5">Listado de Ventas</h1>
+<br>
+<button type="button" class="btn btn-primary float-end m-2" data-bs-toggle="modal" data-bs-target="#nuevaVenta"
+    (click)="modalCrear()">
+    Nueva Venta
+</button>
+
+<table class="table table-striped">
+    <thead>
+        <th class="text-center">CODIGO</th>
+        <th class="text-center">PRODUCTO</th>
+        <th class="text-center">CLIENTE</th>
+        <th class="text-center">USUARIO</th>
+        <th class="text-center">CANTIDAD</th>
+        <th class="text-center">PRECIO TOTAL</th>
+        <th class="text-center">FECHA</th>
+        <th class="text-center">OPCIONES</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let venta of ventaList|async">
+            <td class="text-center">{{venta.id}}</td>
+            <td>{{venta.producto}}</td>
+            <td>{{venta.cliente}}</td>
+            <td class="text-center">{{venta.usuario}}</td>
+            <td class="text-center">{{venta.cantidad}}</td>
+            <td class="text-center">{{venta.precio}}</td>
+            <td class="text-center">{{venta.fecha}}</td>
+            <td class="text-center">
+                <button class="btn btn-outline-primary" (click)="modalEditar(venta)" data-bs-toggle="modal"
+                    data-bs-target="#nuevaVenta">
+                    <i class="bi bi-pencil-fill"></i>
+                </button>
+                <button class="btn btn-outline-danger" (click)="eliminar(venta)">
+                    <i class="bi bi-trash-fill"></i>
+                </button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade" id="nuevaVenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="modalCerrar()" id="crear-modal-cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <app-crear [venta]="venta" *ngIf="activateCrearModal"></app-crear>
+            </div>
+        </div>
+    </div>
+</div>

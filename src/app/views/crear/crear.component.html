@@ -1,0 +1,29 @@
+<form action="">
+    <div class="mb-3">
+        <label for="" class="form-label">Producto</label>
+        <input type="text" class="form-control" name="producto" [(ngModel)]="producto">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Cliente</label>
+        <input type="text" class="form-control" name="cliente" [(ngModel)]="cliente">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Cantidad</label>
+        <input type="number" class="form-control" name="cantidad" [(ngModel)]="cantidad">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Precio Total</label>
+        <input type="number" class="form-control" name="precio" [(ngModel)]="precio">
+    </div>
+    <div class="text-center">
+        <button (click)="registrarVenta()" *ngIf="venta.id==0" class="btn btn-primary">
+            Registrar
+        </button>
+        <button (click)="actualizarVenta()" *ngIf="venta.id!=0" class="btn btn-primary">
+            Actualizar
+        </button>
+        <button (click)="cerrarModal()" class="btn btn-danger">
+            Cancelar
+        </button>
+    </div>
+</form>
